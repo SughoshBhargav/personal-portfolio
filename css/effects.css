@@ -1,0 +1,114 @@
+/* ================================================
+   SCROLL PROGRESS BAR
+================================================ */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--indigo), var(--cyan));
+  z-index: 10000;
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+/* ================================================
+   ACTIVE NAV LINK
+================================================ */
+.nav-links a.nav-active {
+  color: var(--text) !important;
+}
+.nav-links a.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 0; right: 0;
+  height: 1.5px;
+  background: var(--indigo-light);
+  border-radius: 2px;
+}
+
+/* ================================================
+   3D CARD TILT — fast transition after reveal done
+================================================ */
+.project-card.reveal.visible,
+.skill-group.reveal.visible {
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease) !important;
+}
+
+/* ================================================
+   MAGNETIC BUTTONS — spring back quickly
+================================================ */
+.btn-primary, .btn-ghost, .nav-resume {
+  will-change: transform;
+}
+
+/* ================================================
+   TYPEWRITER CURSOR
+================================================ */
+.tw-cursor {
+  display: inline-block;
+  width: 1.5px;
+  height: 0.9em;
+  background: var(--indigo-light);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: tw-blink 0.85s step-end infinite;
+}
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ================================================
+   HERO SPOTLIGHT (cursor-following glow)
+================================================ */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    700px circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(99, 102, 241, 0.07),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 1;
+}
+#hero:hover .hero-spotlight { opacity: 1; }
+
+
+/* ================================================
+   TAG HOVER LIFT
+================================================ */
+.tag {
+  transition: transform 0.15s var(--ease), background 0.2s, border-color 0.2s, color 0.2s !important;
+}
+.tag:hover {
+  transform: translateY(-2px);
+  background: var(--tag-bg);
+  border-color: var(--indigo-light);
+  color: var(--indigo-light);
+}
+
+/* ================================================
+   SECTION UNDERLINE ACCENT
+================================================ */
+.section-heading {
+  position: relative;
+  display: inline-block;
+}
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--indigo), var(--cyan));
+  border-radius: 2px;
+  transition: width 0.5s var(--ease) 0.2s;
+}
+.section-heading.heading-visible::after {
+  width: 60px;
+}
